@@ -1,3 +1,5 @@
+import subprocess
+
 class FileMv:
   CATEGORY = "ic/fileops"
   @classmethod
@@ -11,14 +13,15 @@ class FileMv:
     }
 
   # Outputs the index and filename
-  RETURN_TYPES = ("STRING",)
-  # RETURN_NAMES = ("Terminal Output")
+  RETURN_TYPES = ("STRING","STRING",)
+  RETURN_NAMES = ("Terminal Output","Terminal Error",)
 
   FUNCTION = "main"
   
   def main(self, origin="", destination=""):
-    print(origin, destination)
-    return (destination,)
+    result = subprocess.run(["mv", origin, destination], capture_output=True, text=True)
+    print(result.stdout)
+    return (result.stdout,result.stderr)
   
 class FilePath:
   CATEGORY = "ic/fileops"
@@ -27,18 +30,17 @@ class FilePath:
     return {
       "required": {
         "path": ("STRING",),
-        # Dropdown for regex or extension
       }
     }
 
   # Outputs the index and filename
   RETURN_TYPES = ("STRING",)
-  RETURN_NAMES = ("Filepath (string)")
+  RETURN_NAMES = ("Filepath")
 
   FUNCTION = "main"
   
   def main(self, path=""):
-    print(path)
+    print("Loading path {}".format(path))
     return (path,)
 
 NODE_DISPLAY_NAME_MAPPINGS = {

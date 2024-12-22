@@ -1,31 +1,29 @@
 class FileMv:
-  
+  CATEGORY = "ic/fileops"
   @classmethod
   def INPUT_TYPES(cls):
-      return {
-          "required": {
-              "origin": ("STRING", {"forceInput": True, "default": "", "dynamicPrompts": False}),
-              # Dropdown for regex or extension
-              "destination": ("STRING", {"default": "extension"}),
-          }
+    return {
+      "required": {
+        "origin": ("STRING",),
+        # Dropdown for regex or extension
+        "destination": ("STRING",),
       }
+    }
 
   # Outputs the index and filename
-  RETURN_TYPES = ("STRING")
-  RETURN_NAMES = ("Terminal Output")
-
-  OUTPUT_NODE = True
+  RETURN_TYPES = ("STRING",)
+  # RETURN_NAMES = ("Terminal Output")
 
   FUNCTION = "main"
-  CATEGORY = "IC/fileops"
   
   def main(self, origin="", destination=""):
+    print(origin, destination)
     return (destination,)
   
 NODE_CLASS_MAPPINGS = {
-    "FileMv": FileMv
+    "FileMv": FileMv,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "FileMv": "ComfyUI FileMv"
+    "FileMv": "ComfyUI FileMv",
 }

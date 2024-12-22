@@ -1,3 +1,7 @@
-from .fileops import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
+from .fileops import FileMv
 
-__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS']
+NODE_CLASS_MAPPINGS = {
+    "File Mv": FileMv,
+}
+
+__all__ = ['NODE_CLASS_MAPPINGS']

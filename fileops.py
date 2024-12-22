@@ -13,15 +13,14 @@ class FileMv:
     }
 
   # Outputs the index and filename
-  RETURN_TYPES = ("STRING","STRING",)
-  RETURN_NAMES = ("Terminal Output","Terminal Error",)
+  RETURN_TYPES = ("STRING",)
+  RETURN_NAMES = ("New Path",)
 
   FUNCTION = "main"
   
   def main(self, origin="", destination=""):
     result = subprocess.run(["mv", origin, destination], capture_output=True, text=True)
-    print(result.stdout)
-    return (result.stdout,result.stderr)
+    return (destination)
   
 class FilePath:
   CATEGORY = "ic/fileops"
@@ -63,7 +62,7 @@ class MkDir:
   def main(self, dir_name="", parent_path=""):
     print("Making directory {}".format(dir_name))
     result = subprocess.run(["mkdir", "-p", "{}/{}".format(parent_path, dir_name)], capture_output=True, text=True)
-    return ("{}/{}".format(parent_path, dir_name),)
+    return ("{}/{}/".format(parent_path, dir_name),)
 
 
 NODE_DISPLAY_NAME_MAPPINGS = {

@@ -17,4 +17,4 @@ class FileMv:
     OUTPUT_NODE = True
 
     FUNCTION = "mv_file"
-    CATEGORY = "ic/fileops"
+    CATEGORY = "IC/fileops"

@@ -21,3 +21,11 @@ class FileMv:
   
   def main(self, origin="", destination=""):
     return (destination,)
+  
+NODE_CLASS_MAPPINGS = {
+    "FileMv": FileMv
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "FileMv": "ComfyUI FileMv"
+}
